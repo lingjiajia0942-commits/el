@@ -1,0 +1,78 @@
+<div class="beaker">
+  <div class="wire">
+      <div class="electron" id="wireElectron"></div>
+  </div>
+
+  <div class="electrode left">Zn(s)</div>
+  <div class="electrode right">Cu(s)</div>
+
+  <!-- Zn2+ ions -->
+  <div class="ion zn" id="zn1"><span>Zn²⁺</span></div>
+  <div class="ion zn" id="zn2"><span>Zn²⁺</span></div>
+
+  <!-- Cu2+ ions -->
+  <div class="ion cu" id="cu1"><span>Cu²⁺</span></div>
+  <div class="ion cu" id="cu2"><span>Cu²⁺</span></div>
+</div>
+
+.electrode {
+    position: absolute;
+    top: 30px;
+    width: 20px;
+    height: 160px;
+    background: black;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+}
+.left { left: 10px; }
+.right { right: 10px; }
+
+.ion {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+    line-height: 35px;
+    font-weight: bold;
+    font-size: 12px;
+    color: black;
+}
+.zn { background: #b0b0b0; }
+.cu { background: #ffa726; }
+
+.wire {
+    position: absolute;
+    top: -30px;
+    left: 20px;
+    right: 20px;
+    height: 4px;
+    background: white;
+}
+
+.electron {
+    width: 10px;
+    height: 10px;
+    background: cyan;
+    border-radius: 50%;
+    position: absolute;
+}
+
+<script>
+function startGalvanic() {
+
+  // Zn2+ moves away from Zn electrode (oxidation)
+  document.getElementById("zn1").style.left = "120px";
+  document.getElementById("zn2").style.left = "150px";
+
+  // Cu2+ moves toward Cu electrode (reduction)
+  document.getElementById("cu1").style.left = "240px";
+  document.getElementById("cu2").style.left = "210px";
+
+  // Electron flow in wire (Zn → Cu)
+  let e = document.getElementById("wireElectron");
+  e.style.transition = "left 2s linear";
+  e.style.left = "90%";
+}
+</script>
